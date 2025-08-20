@@ -23,4 +23,5 @@ services:
       - "6000:3000"  # host:container
     volumes:
       - ./frontend:/app
+      - /app/node_modules  # live reload during dev (optional)
     restart: unless-stopped
