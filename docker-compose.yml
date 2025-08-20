@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: ace-backend
+    ports:
+      - "7000:8000"  # host:container
+    volumes:
+      - ./backend:/app  # live reload during dev (optional)
+    environment:
+      - UV_SYSTEM_PYTHON=1
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: ace-frontend
+    ports:
+      - "6000:3000"  # host:container
+    volumes:
+      - ./frontend:/app
+    restart: unless-stopped
