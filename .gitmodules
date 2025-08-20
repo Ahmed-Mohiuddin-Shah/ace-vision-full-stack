@@ -1,0 +1,6 @@
+[submodule "backend"]
+	path = backend
+	url = https://github.com/Ahmed-Mohiuddin-Shah/ace-vision-backend.git
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/Ahmed-Mohiuddin-Shah/ace-vision-frontend.git
