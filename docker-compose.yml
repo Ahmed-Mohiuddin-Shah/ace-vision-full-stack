@@ -10,10 +10,7 @@ services:
       - "7000:8000"  # host:container
     volumes:
       - ./backend:/app  # live reload during dev (optional)
-    env_file:
-      - .env
     environment:
-      NEXT_PUBLIC_BACKEND_URL: ${NEXT_PUBLIC_BACKEND_URL}
       UV_SYSTEM_PYTHON: 1
     restart: unless-stopped
 
@@ -21,9 +18,13 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      args:               # pass env vars at build-time for Next.js
+        NEXT_PUBLIC_BACKEND_URL: ${NEXT_PUBLIC_BACKEND_URL}
     container_name: ace-frontend
     ports:
       - "6000:3000"  # host:container
+    env_file:
+      - ./frontend/.env
     volumes:
       - ./frontend:/app
       - /app/node_modules  # live reload during dev (optional)
