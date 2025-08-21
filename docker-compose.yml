@@ -10,8 +10,11 @@ services:
       - "7000:8000"  # host:container
     volumes:
       - ./backend:/app  # live reload during dev (optional)
+    env_file:
+      - .env
     environment:
-      - UV_SYSTEM_PYTHON=1
+      NEXT_PUBLIC_BACKEND_URL: ${NEXT_PUBLIC_BACKEND_URL}
+      UV_SYSTEM_PYTHON: 1
     restart: unless-stopped
 
   frontend:
