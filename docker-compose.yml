@@ -28,6 +28,5 @@ services:
     env_file:
       - ./frontend/.env
     volumes:
-      - ./frontend:/app
       - /app/node_modules  # live reload during dev (optional)
     restart: unless-stopped
