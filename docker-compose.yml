@@ -18,8 +18,10 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-      args:               # pass env vars at build-time for Next.js
-        NEXT_PUBLIC_BACKEND_URL: ${NEXT_PUBLIC_BACKEND_URL}
+      args:
+        NEXT_PUBLIC_BACKEND_URL: "https://fypapi.mamajees.com"
+    environment:
+      NEXT_PUBLIC_BACKEND_URL: "https://fypapi.mamajees.com"
     container_name: ace-frontend
     ports:
       - "6000:3000"  # host:container
